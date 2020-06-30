@@ -61,9 +61,19 @@ class Orm
         } 
         return $this;
     }
-    public function insert()
+    public function insert($field)
     {
         $this->type = "insert into";
+        $timed = explode(",", $field );
+        //принял строкк типа кк=55,пп=77 после получил массив из 2х элементов
+        foreach ($timed as $tim){
+        $res = explode("=",$tim);
+        $total .= res['0']." = "." ? ";
+        $this->field[]= $total["0"]." = ? ";
+        $this->field_valie[] = $total["1"];
+        }
+        return $this;
+        
     }
     public function update()
     {
@@ -95,6 +105,12 @@ class Orm
         }
         $this->where = $total;
         return $this;
+    }
+    public function set($value)
+    {
+      
+      
+      return $this;
     }
 
 
