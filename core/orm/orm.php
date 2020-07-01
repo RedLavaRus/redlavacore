@@ -75,13 +75,29 @@ class Orm
         return $this;
         
     }
-    public function update()
+    public function update($field)
     {
         $this->type = "update";
+        $timed = explode(",",$field);
+        foreach($timed as $tim){
+          $res = explode("=", $tim);
+          $total = $res["0"]." = ?";
+          $this->field[]= $total["0"]." = ? ";
+          $this->field_valie[] = $total["1"];
+        }
+    return $this;
     }
     public function delete()
     {
         $this->type = "delete from";
+    }
+    public function create()
+    {
+      $this->type = "create";
+    
+      
+      
+      return $this;
     }
 
     public function where($array)//id=1 | id=1 and name = name1 |  id=1 or name = name1 |
