@@ -17,6 +17,9 @@ class Orm
     public  $insert_value = null;
     public  $result;
     public  $queryValue = null;
+    public  $delete;
+    public  $create;
+    public  $column;
 
 
     function __construct($table_name)
@@ -81,20 +84,27 @@ class Orm
         }
     return $this;
     }
-    public function delete()
+    public function delete($field)
     {
         $this->type = "delete from";
+        $this->delete = $field;
+        return $this;
     }
-    public function create()
+    public function create($field = "id INT(11) NOT NULL")
     {
       $this->type = "create";
-    
-      
+      $this->create = $field;      
       
       return $this;
     }
+    public function alert($column){
+        $this->type = "alert table";
+        $this->column =  explode(",",$column);
+        
 
-    public function where($array)//id=1 | id=1 and name = name1 |  id=1 or name = name1 |
+    }
+
+    public function where($array)
     {
         $total='';
         $argument = explode("=", $array);
