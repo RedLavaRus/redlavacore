@@ -26,4 +26,8 @@ class Router
     {
 
     }
+    public function register($url,$modul,$way, $method, $type)
+    {
+        
+    }
 }

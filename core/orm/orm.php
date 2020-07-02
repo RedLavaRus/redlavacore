@@ -136,7 +136,7 @@ class Orm
 
     public function execute()
     {
-        if($this->type=="select"){
+        if($this->type == "select"){
             $this->sql_query = $this->type." ". $this->fields . " from". $this->from;
             if($this->where != null){
                 $this->sql_query=$this->sql_query." WHERE ".$this->where . " "; 
@@ -146,6 +146,26 @@ class Orm
             }
             $this->result = $this->pdo->prepare($this->sql_query);
             $this->result->execute($this->whereValue);            
+        }
+        if($this->type == "insert into")
+        {
+
+        }
+        if($this->type == "update")
+        {
+            
+        }
+        if($this->type == "delete from")
+        {
+            
+        }
+        if($this->type == "create")
+        {
+            
+        }
+        if($this->type == "alert table")
+        {
+            
         }
         return $this;
     }
