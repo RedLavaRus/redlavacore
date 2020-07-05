@@ -8,24 +8,16 @@ use PDO;
 /**/
 class Orm
 {
-    public  $table_name;
-    public  $fields;
-    public  $type;
-    public  $query;
-    public  $where;
-    public  $whereValue = null;
-    public  $insert_value = null;
-    public  $result;
-    public  $queryValue = null;
-    public  $delete;
-    public  $create;
-    public  $column;
+    public $type;
+    public $field;
+    public $table;
+    public $where_array;
+    public $set_array;
+    public $insert_array;
 
-
-    function __construct($table_name)
+    function __construct()
     {
         $this->_self_class = get_class($this);
-        $this->from = " `".$table_name."` ";
         $opt = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -33,110 +25,105 @@ class Orm
         ];
         $this->pdo = new PDO("mysql:host=".CFG::$db_host." ;dbname=".CFG::$db_name,CFG::$db_user,CFG::$db_pass,$opt);
         $this->pdo->exec("SET CHARSET ".CFG::$db_code);
+        return $this;
+    }
+    
+    public function select($field)
+    {
+        $this->type = "select";        
+        $this->field = $this->strToArray($field,",");
+        return $this;
+    }
+    
+    public function update($value)
+    {
+        $this->type = "update";  
+        $res = $this->strToArray($value,",");
+        foreach($res as $r){
+            $this->set_array[] = $this->strToArray($r,"=");
+        }
+        return $this;
+    }
+    
+    public function insert($value)
+    {
+        $this->type = "insert";  
+        $res = $this->strToArray($value,",");
+        foreach($res as $r){
+            $this->insert_array[] = $this->strToArray($r,"=");
+        }
+        return $this;
+    }
+    
+    public function delete()
+    {
+        $this->type = "delete"; 
+        return $this;
+    }
+    
+    public function create($field)
+    {
+        $this->type = "create"; 
+        $this->field = $field;
+        return $this;
+    }
+        
+    public function from($table)//m = 1, n =2
+    {
+        $this->table = $table;
+        return $this;
     }
 
-
-    /**
-     * Принимает поля выборки, добавляет их в поля фиелдси в строкузапроса
-     */
-    public function select($field = "*")
+    public function where($value)
     {
+        $res = $this->strToArray($value,",");
+        foreach($res as $r){
+            $this->where_array[] = $this->strToArray($r,"=");
+        }
+        return $this;
+    }
+    
 
-        $this->type = "select";
-        $argument = explode(",", $field);//Принимает user или user,pssword,email
-        if(!isset($argument["1"]))
+
+    public function strToArray($str,$char)
+    {
+        $rd = explode($char,$str);//m = 1, n =2
+        if(empty($rd["1"]))
         {
-            if( $argument["0"] == "*")
-            {
-                $this->fields = "*";
-                
-            }else{
-                $this->fields = "`".$argument[0]."`";
-               
-            }            
+            $total[] =  trim($rd["0"]);
         }else{
-            foreach($argument as $arg)
-            {
-                $result = trim($arg);
-                $query[] ="`".$result."`";
+            foreach($rd as $r){
+                $total[] =  trim($r);
             }
-            $this->fields = implode(',',$query);
-            
-        } 
-        return $this;
-    }
-    public function insert($field)
-    {
-        $this->type = "insert into";
-        $this->field = explode(",", $field );
-        return $this;
-        
-    }
-    public function update($field)
-    {
-        $this->type = "update";
-        $timed = explode(",",$field);
-        foreach($timed as $tim){
-          $res = explode("=", $tim);
-          $total = $res["0"]." = ?";
-          $this->field[]= $total["0"]." = ? ";
-          $this->field_valie[] = $total["1"];
-        }
-    return $this;
-    }
-    public function delete($field)
-    {
-        $this->type = "delete from";
-        $this->delete = $field;
-        return $this;
-    }
-    public function create($field = "id INT(11) NOT NULL")
-    {
-      $this->type = "create";
-      $this->create = $field;      
-      
-      return $this;
-    }
-    public function alert($column){
-        $this->type = "alert table";
-        $this->column =  explode(",",$column);
-        
-
+        }              
+        return $total;
     }
 
-    public function where($array)
-    {
-        $total='';
-        $argument = explode("=", $array);
-        $x = 1;
-        foreach($argument as $arg){            
-            $arg = trim($arg);
-            $res = explode(" ", $arg);
-            if($x == 1){
-                $x=0;
-                $total = $total.$res[$x];
-            }else{
-                $res2 = str_replace($res[$x], "?", $arg);
-                $total = $total." = ".$res2. " ";
-                $this->whereValue[]= $res['0'];
-            }
-           
-           
-        }
-        $this->where = $total;
-        return $this;
-    }
-    public function values($value)
-    {
-      
-        $this->insert_value = explode(",", $field );
-        return $this;
-    }
 
 
     public function execute()
     {
         if($this->type == "select"){
+
+            return $this;
+        }
+        if($this->type == "update"){
+
+            return $this;
+        }
+        if($this->type == "insert"){
+
+            return $this;
+        }
+        if($this->type == "delete"){
+
+            return $this;
+        }
+        if($this->type == "create"){
+
+            return $this;
+        }
+       /* if($this->type == "select"){
             $this->sql_query = $this->type." ". $this->fields . " from". $this->from;
             if($this->where != null){
                 $this->sql_query=$this->sql_query." WHERE ".$this->where . " "; 
@@ -146,27 +133,7 @@ class Orm
             }
             $this->result = $this->pdo->prepare($this->sql_query);
             $this->result->execute($this->whereValue);            
-        }
-        if($this->type == "insert into")
-        {
-
-        }
-        if($this->type == "update")
-        {
-            
-        }
-        if($this->type == "delete from")
-        {
-            
-        }
-        if($this->type == "create")
-        {
-            
-        }
-        if($this->type == "alert table")
-        {
-            
-        }
+        }*/
         return $this;
     }
     public function fetch()
@@ -174,13 +141,9 @@ class Orm
         $this->array = $this->result->fetch(PDO::FETCH_ASSOC);
         return $this;
     }
-}    
-
-
-
-
-
-
-
-
-?>
+    public function object()
+    {
+        
+        return $this;
+    }
+}
