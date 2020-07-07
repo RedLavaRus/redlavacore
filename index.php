@@ -15,11 +15,9 @@ $Orm = new Core\Orm\Orm;
 
 //var_dump($Orm);
 
-$dd = $Orm->create("rtt");
-
-echo "<pre>";
-var_dump($dd);
-echo "</pre>";
+$dd = $Orm->select("*")->from("test")->execute()->object();
+//$dd
+var_dump("<pre>",$dd,"</pre>");
 //->execute()->fetch()->object();
  
 

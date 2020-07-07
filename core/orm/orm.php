@@ -14,8 +14,13 @@ class Orm
     public $where_array;
     public $set_array;
     public $insert_array;
+    public $query;
+    public $query_value;
+    public $pdo;
+    public $execute;
+    public $array;
 
-    function __construct()
+    public function __construct()
     {
         $this->_self_class = get_class($this);
         $opt = [
@@ -23,47 +28,47 @@ class Orm
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
-        $this->pdo = new PDO("mysql:host=".CFG::$db_host." ;dbname=".CFG::$db_name,CFG::$db_user,CFG::$db_pass,$opt);
+        $this->pdo = new PDO("mysql:host=".CFG::$db_host." ;dbname=".CFG::$db_name, CFG::$db_user, CFG::$db_pass, $opt);
         $this->pdo->exec("SET CHARSET ".CFG::$db_code);
         return $this;
     }
     
     public function select($field)
     {
-        $this->type = "select";        
-        $this->field = $this->strToArray($field,",");
+        $this->type = "select";
+        $this->field = $this->strToArray($field, ",");
         return $this;
     }
     
     public function update($value)
     {
-        $this->type = "update";  
-        $res = $this->strToArray($value,",");
-        foreach($res as $r){
-            $this->set_array[] = $this->strToArray($r,"=");
+        $this->type = "update";
+        $res = $this->strToArray($value, ",");
+        foreach ($res as $r) {
+            $this->set_array[] = $this->strToArray($r, "=");
         }
         return $this;
     }
     
     public function insert($value)
     {
-        $this->type = "insert";  
-        $res = $this->strToArray($value,",");
-        foreach($res as $r){
-            $this->insert_array[] = $this->strToArray($r,"=");
+        $this->type = "insert";
+        $res = $this->strToArray($value, ",");
+        foreach ($res as $r) {
+            $this->insert_array[] = $this->strToArray($r, "=");
         }
         return $this;
     }
     
     public function delete()
     {
-        $this->type = "delete"; 
+        $this->type = "delete";
         return $this;
     }
     
     public function create($field)
     {
-        $this->type = "create"; 
+        $this->type = "create";
         $this->field = $field;
         return $this;
     }
@@ -76,26 +81,25 @@ class Orm
 
     public function where($value)
     {
-        $res = $this->strToArray($value,",");
-        foreach($res as $r){
-            $this->where_array[] = $this->strToArray($r,"=");
+        $res = $this->strToArray($value, ",");
+        foreach ($res as $r) {
+            $this->where_array[] = $this->strToArray($r, "=");
         }
         return $this;
     }
     
 
 
-    public function strToArray($str,$char)
+    public function strToArray($str, $char)
     {
-        $rd = explode($char,$str);//m = 1, n =2
-        if(empty($rd["1"]))
-        {
+        $rd = explode($char, $str);//m = 1, n =2
+        if (empty($rd["1"])) {
             $total[] =  trim($rd["0"]);
-        }else{
-            foreach($rd as $r){
+        } else {
+            foreach ($rd as $r) {
                 $total[] =  trim($r);
             }
-        }              
+        }
         return $total;
     }
 
@@ -103,47 +107,77 @@ class Orm
 
     public function execute()
     {
-        if($this->type == "select"){
+        if ($this->type == "select") {
+            $this->query = "SELECT ";
 
-            return $this;
-        }
-        if($this->type == "update"){
-
-            return $this;
-        }
-        if($this->type == "insert"){
-
-            return $this;
-        }
-        if($this->type == "delete"){
-
-            return $this;
-        }
-        if($this->type == "create"){
-
-            return $this;
-        }
-       /* if($this->type == "select"){
-            $this->sql_query = $this->type." ". $this->fields . " from". $this->from;
-            if($this->where != null){
-                $this->sql_query=$this->sql_query." WHERE ".$this->where . " "; 
-                $result = $this->pdo->prepare($this->sql_query);
-            }else{
-
+            $s=0;
+            $timed = "";
+            foreach ($this->field as $field) {
+                if ($s >= 1) {
+                    $timed = " , ";
+                }
+                $this->query .=  $timed." `".trim($field)."` ";
+                $s++;
             }
-            $this->result = $this->pdo->prepare($this->sql_query);
-            $this->result->execute($this->whereValue);            
-        }*/
+            $this->query .= " FROM `".$this->table . "` ";
+            $s=0;
+            $timed = "";
+            if (!empty($this->where_array)) {
+                $this->query .= " WHERE ";
+                foreach ($this->where_array as $wh) {
+                    if ($s >= 1) {
+                        $timed = " AND ";
+                    }
+                    $this->query .= $timed." `".$wh["0"]."` = ?";
+                    $this->query_value[] = $wh["1"];
+                    $s++;
+                }
+            }
+                $this->execute = $this->pdo->prepare($this->query);
+                $this->execute->execute($this->query_value);
+            return $this;
+
+        }
+        if ($this->type == "update") {
+            return $this;
+        }
+        if ($this->type == "insert") {
+            return $this;
+        }
+        if ($this->type == "delete") {
+            return $this;
+        }
+        if ($this->type == "create") {
+            return $this;
+        }
+        /* if($this->type == "select"){
+             $this->sql_query = $this->type." ". $this->fields . " from". $this->from;
+             if($this->where != null){
+                 $this->sql_query=$this->sql_query." WHERE ".$this->where . " ";
+                 $result = $this->pdo->prepare($this->sql_query);
+             }else{
+
+             }
+             $this->result = $this->pdo->prepare($this->sql_query);
+             $this->result->execute($this->whereValue);
+         }*/
         return $this;
     }
+    
     public function fetch()
     {
-        $this->array = $this->result->fetch(PDO::FETCH_ASSOC);
+        $this->array = $this->execute->fetch(PDO::FETCH_ASSOC);
         return $this;
     }
     public function object()
     {
-        
+        do{
+            $this->fetch();
+            $this->object[] = $this->array;
+            echo 1;
+        }
+        while($this->array);
+        array_pop($this->object) ;
         return $this;
     }
 }
