@@ -15,7 +15,7 @@ $Orm = new Core\Orm\Orm;
 
 //var_dump($Orm);
 
-$dd = $Orm->select("*")->from("test")->execute()->object();
+$dd = $Orm->update("name = name3")->from("test")->where("id = 1")->execute();//->object();
 //$dd
 var_dump("<pre>",$dd,"</pre>");
 //->execute()->fetch()->object();

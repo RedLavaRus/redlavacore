@@ -5,7 +5,6 @@ namespace Core\Orm;
 
 use CFG;
 use PDO;
-/**/
 class Orm
 {
     public $type;
@@ -65,14 +64,7 @@ class Orm
         $this->type = "delete";
         return $this;
     }
-    
-    public function create($field)
-    {
-        $this->type = "create";
-        $this->field = $field;
-        return $this;
-    }
-        
+
     public function from($table)//m = 1, n =2
     {
         $this->table = $table;
@@ -139,6 +131,33 @@ class Orm
 
         }
         if ($this->type == "update") {
+            $this->query = "UPDATE "." `".$this->table."` "." SET ";
+
+            $s=0;
+            $timed = "";
+            foreach ($this->set_array as $wh) {
+                if ($s >= 1) {
+                    $timed = " , ";
+                }
+                $this->query .= $timed." `".$wh["0"]."` = ?";
+                $this->query_value[] = $wh["1"];
+                $s++;
+            }
+            $s=0;
+            $timed = "";
+            if (!empty($this->where_array)) {
+                $this->query .= " WHERE ";
+                foreach ($this->where_array as $wh) {
+                    if ($s >= 1) {
+                        $timed = " AND ";
+                    }
+                    $this->query .= $timed." `".$wh["0"]."` = ?";
+                    $this->query_value[] = $wh["1"];
+                    $s++;
+                }
+            }
+            $this->execute = $this->pdo->prepare($this->query);
+            $this->execute->execute($this->query_value);
             return $this;
         }
         if ($this->type == "insert") {
@@ -147,20 +166,6 @@ class Orm
         if ($this->type == "delete") {
             return $this;
         }
-        if ($this->type == "create") {
-            return $this;
-        }
-        /* if($this->type == "select"){
-             $this->sql_query = $this->type." ". $this->fields . " from". $this->from;
-             if($this->where != null){
-                 $this->sql_query=$this->sql_query." WHERE ".$this->where . " ";
-                 $result = $this->pdo->prepare($this->sql_query);
-             }else{
-
-             }
-             $this->result = $this->pdo->prepare($this->sql_query);
-             $this->result->execute($this->whereValue);
-         }*/
         return $this;
     }
     
