@@ -161,6 +161,26 @@ class Orm
             return $this;
         }
         if ($this->type == "insert") {
+            $this->query = "INSERT INTO "." `".$this->table."` ";
+            $s=0;
+            $timed = "";
+            $left = " ( ";
+            $right = " ( ";
+            foreach ($this->insert_array as $wh) {
+                if ($s >= 1) {
+                    $timed = ",";
+                }
+                $left .= $timed." `".$wh["0"]."`  ";
+                $right .= $timed." ? ";
+                $this->query_value[] =$wh["1"];
+                $s++;
+            }
+
+            $left .= " ) ";
+            $right .= " ) ";
+            $this->query .=$left." VALUES ".$right;
+            $this->execute = $this->pdo->prepare($this->query);
+            $this->execute->execute($this->query_value);
             return $this;
         }
         if ($this->type == "delete") {
