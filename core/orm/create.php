@@ -26,24 +26,18 @@ class Create extends Orm
     {
         $this->type = "create";
         $this->table_name = $table_name;
-
-        $this->name[] = "id";
-        $this->type_var[] = "INT";
-        $this->lang[] = $id_leng;
-        $this->default[] = "";
-        $this->comment[] ="Идентификатор";
-        $this->atribut[] ="UNSIGNED AUTO_INCREMENT PRIMARY KEY";
+        $this->add("id", "INT", $id_leng, "", "Идентификатор","UNSIGNED AUTO_INCREMENT PRIMARY KEY");
         return $this;
 
     }
     public function add($name = null, $type = null, $lang = null , $default = null, $comment = null, $atribut = null)
     {
-        $name != null ?     $this->name[] = $name           : $this->name[] = $this->randName();
-        $type != null ?     $this->type_var[] = $type      : $this->type_var[] = "VARCHAR";
-        $lang != null ?     $this->lang[] = $lang          : $this->lang[] = 255;
-        $default != null ?  $this->default[] = $default    : $this->default[] = "NULL";
-        $comment != null ?  $this->comment[] = $comment    : $this->comment[] = "";
-        $atribut != null ?  $this->tribut[] = $atribut     : $this->atribut[] = "";  
+        $this->addName($name);
+        $this->addType($type);
+        $this->addLang($lang);
+        $this->addDefault($default);
+        $this->addComment($comment);
+        $this->addAtribut($atribut); 
         return $this; 
     }
     public function randName()
@@ -51,6 +45,60 @@ class Create extends Orm
         $temp = rand(1,999999);
         $temp = md5($temp);
         return $temp;
+    }
+    public function addName($name)
+    {
+        if($name != null){
+            $this->name[] = $name;
+        }else{
+            $this->name[] = $this->randName();
+        }
+        return ;
+    }
+    public function addType($type)
+    {
+        if($type != null){
+            $this->type_var[] = $type;
+        } else{
+            $this->type_var[] = "VARCHAR";
+        } 
+        return ;
+    }
+    public function addLang($lang)
+    {
+        if($lang != null){
+            $this->lang[] = $lang; 
+        }else{
+            $this->lang[] = 255;
+        }  
+        return ;    
+    }
+    public function addDefault($default)
+    {
+        if($default != null){
+            $this->default[] = $default; 
+        }else{
+            $this->default[] = "NULL";
+        }  
+        return ;    
+    }
+    public function addComment($comment)
+    {
+        if($comment != null){
+            $this->comment[] = $comment; 
+        }else{
+            $this->comment[] ="";
+        }  
+        return ;    
+    }
+    public function addAtribut($lang)
+    {
+        if($atribut != null){
+            $this->atribut[] = $atribut; 
+        }else{
+            $this->atribut[] = "";
+        }  
+        return ;    
     }
 
 }    
