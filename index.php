@@ -8,7 +8,7 @@ use Core\Orm\Orm;
 
 CFG::debag(true);
 
-$Create = new Core\Orm\Create;
+$dd = new Core\Orm\Create();
 //$Orm->select("id, name")->execute()->fetch();//
 
 //INSERT INTO `category` SET `parent` = :parent, `name` = :name
@@ -16,12 +16,12 @@ $Create = new Core\Orm\Create;
 //var_dump($Orm);
 
 //$dd = $Orm->insert("name = name23, id = 323")->from("test")->execute();//->object();
-//$dd
-$dd = Create("table_name","leng(9)");//по умолчанию создает таблицу с id INT(9) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-$dd ->add("name1","type","leng","default","comment");
-$dd ->add("name2","type","leng","default","comment");
-$dd ->add("name3","type","leng","default","comment");
-$dd ->add("name4","type","leng","default","comment");
+
+/*$dd -> create("table_name1",9)//по умолчанию создает таблицу с id INT(9) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+->add("name1","int","5","1","comment")
+->add(null,"VARCHAR","255","null","comment")
+->add("name3","VARCHAR","255","not null","comment")
+->add("name4","text","","rddd","comment");
 $dd ->execute();
 /*
 

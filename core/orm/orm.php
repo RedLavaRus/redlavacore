@@ -186,6 +186,32 @@ class Orm
         if ($this->type == "delete") {
             return $this;
         }
+        if ($this->type == "create") {
+            $this->query = " CREATE TABLE `".$this->table_name."` ( ";
+                $x=0;
+            do{
+                $x != 0 ? $this->query .= " , " : $this->query .="";
+                $this->query .= " ".$this->name[$x];
+                $this->query .= " ". $this->type_var[$x];
+                $this->query .= " (".$this->lang[$x].")";
+                if ($this->default[$x] != null) {
+                    $this->query .= "  DEFAULT ".$this->default[$x];
+                }
+                if ($this->comment[$x] != null) {
+                    $this->query .= " COMMENT ' ".$this->comment[$x]." ' ";
+                }
+                if ($this->tribut[$x] != null) {
+                    $this->query .= $this->tribut[$x];
+                }
+                $x++;
+            }while($this->name[$x]);
+            $this->query .= " )";
+
+
+            $this->execute = $this->pdo->prepare($this->query);
+            $this->execute->execute();
+            return $this;
+        }
         return $this;
     }
     
