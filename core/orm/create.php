@@ -91,7 +91,7 @@ class Create extends Orm
         }  
         return ;    
     }
-    public function addAtribut($lang)
+    public function addAtribut($atribut)
     {
         if($atribut != null){
             $this->atribut[] = $atribut; 

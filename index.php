@@ -1,14 +1,20 @@
 <?php
 
 include_once __DIR__."/core/core.php";
+include_once __DIR__."/core/event/manager.php";
+$start = new Core\Event\Manager;
+$start->start();
+$ins = new \Core\Router\Router;
+//$ins ->install();
+echo 1;
+
+/**
+ * install
+ * $ins ->install();
+ */
 
 
-use CFG;
-use Core\Orm\Orm;
-
-CFG::debag(true);
-
-$dd = new Core\Orm\Create();
+//$dd = new Core\Orm\Create();
 //$Orm->select("id, name")->execute()->fetch();//
 
 //INSERT INTO `category` SET `parent` = :parent, `name` = :name
@@ -37,7 +43,7 @@ reg_date TIMESTAMP
 
 */
 
-var_dump("<pre>",$dd,"</pre>");
+//var_dump("<pre>",$dd,"</pre>");
 //->execute()->fetch()->object();
  
 

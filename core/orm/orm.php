@@ -195,7 +195,7 @@ class Orm
                 $this->query .= " ". $this->type_var[$x];
                 $this->query .= " (".$this->lang[$x].")";
                 if ($this->default[$x] != null) {
-                    $this->query .= "  DEFAULT ".$this->default[$x];
+                   // $this->query .= "  DEFAULT ".$this->default[$x];
                 }
                 if ($this->comment[$x] != null) {
                     $this->query .= " COMMENT ' ".$this->comment[$x]." ' ";
