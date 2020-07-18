@@ -6,6 +6,6 @@ class Handler
     
     public function index()
     {
-        echo "1";
+        //echo "1";
     }
 }

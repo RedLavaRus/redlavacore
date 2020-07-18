@@ -6,14 +6,15 @@ namespace Core\Event;
 use \CFG;
 use \Core\Func\URL as URL;
 use \Core\Router\Router as Router;
+use \Core\Values\Val as Val;
 
 class Manager
 {
     public function start()
     {
         $this->debag();//запуск дебагера
-        $this->connectLib();// подключение библиотек
         $url = URL::urlToArray();
+        $this->connectLib($url);// подключение библиотек
         Router::redirectToSlash($url);// перенаправление с url на url/
         $obj_class_fun = Router::rout($url); // Получение класса и функции запускаемого экземпляра
         $this->run($obj_class_fun);
@@ -27,9 +28,23 @@ class Manager
     }
 
 // Подключение библеотек
-    public function connectLib()
+    public function connectLib($url)
     {
+        if($url["url"] == NULL){$url["url"][] = "/";}
+        switch ($url["url"]["0"]){
+            case "admin":
+                break;
 
+
+            default:
+            $var_head = '
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            ';
+            Val::addHead($var_head);
+            echo Val::$head;
+            //var_dump(Val::$errors);
+        }
     }
 
 //Запуск класса назначения
