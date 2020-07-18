@@ -20,48 +20,52 @@ class Router
         ->add("func","VARCHAR","255","not null","Функия вызова")
         ->add("Описание","text","","Описание","Описание адреса");
         $dd ->execute();
-        echo "<pre>";
-        var_dump($dd);
     }
-    public static function redirectToSlash()
+    public static function redirectToSlash($url)
     {
-        $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-        $array = explode("/",$url);
-        $old = $array;
-        $dddd="";
-        $end_add = "";
-
-        if (end($array) == "") {
-            array_pop($array);
+        $url_timed = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $array_pre_slash = explode("?",$url_timed);
+        if(substr($array_pre_slash["0"], -1)  != "/"){
+            header('Location: '.self::createRedirectUrl($url).' '); die();
         }
-
-        $rdd = array_pop($array);
-        $rdd.=$end_add;
-        array_push($array, $rdd);
-
-        foreach($array as $r){            
-            $dddd.= $r;
-            if (substr($r,0,1) != "?")$dddd.= "/";
-        }
-
-        $redic  = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .  $dddd;
-        if($dddd != $url) header('Location: '.$redic.' ');
-
+        return;
     }
+
+    public static function createRedirectUrl($url)
+    {
+        $addres = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') .  '://' . $_SERVER['HTTP_HOST'] . "/";
+        foreach($url["url"] as $u){
+            $addres.=$u."/";
+        }
+        if (!empty($url["get"])) {
+            $arr_key = array_keys($url["get"]);
+            $arr_value =array_values($url["get"]);
+            $x = 0;$get_arg="";
+            while (isset($arr_key[$x])) {
+                if($get_arg != "")$get_arg.="&";
+                $get_arg .= $arr_key[$x] . "=".$arr_value[$x];
+                $x++;
+            }
+            $addres.="?".$get_arg;
+        }
+        return $addres;
+    }
+
+
     public static function rout($url)
     {
+        if(!isset($url["url"]) ) $url["url"][] = "/";
         $res_url="";
         foreach($url["url"] as $u){
             $res_url .= $u;
             if (end($url["url"]) != $u) $res_url .= "/";
         }
-
+        
         $dd = new Orm();
         $dd -> select("*")
         ->from("router")
-        ->where("url = ".$u);
-        //->execute();//->object();
-        echo "<pre>";
-        var_dump($dd);
+        ->where("url = ".$res_url)
+        ->execute()->object();
+        return $dd->object[0];
     }
 }

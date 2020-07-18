@@ -11,11 +11,12 @@ class Manager
 {
     public function start()
     {
-        $this->debag();
-        $this->connectLib();
-        Router::redirectToSlash();
+        $this->debag();//запуск дебагера
+        $this->connectLib();// подключение библиотек
         $url = URL::urlToArray();
-        //Router::rout($url);
+        Router::redirectToSlash($url);// перенаправление с url на url/
+        $obj_class_fun = Router::rout($url); // Получение класса и функции запускаемого экземпляра
+        $this->run($obj_class_fun);
     }
 
 //Включение дебага
@@ -30,8 +31,14 @@ class Manager
     {
 
     }
-    public function redirectToSlash()
+
+//Запуск класса назначения
+    public function run($run)
     {
+        $class_name = $run["class"];
+        $function_name =$run["func"];
+        $class_is = new $class_name;
+        $class_is -> $function_name();
 
     }
 }

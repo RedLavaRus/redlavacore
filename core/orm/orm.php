@@ -225,7 +225,6 @@ class Orm
         do{
             $this->fetch();
             $this->object[] = $this->array;
-            echo 1;
         }
         while($this->array);
         array_pop($this->object) ;

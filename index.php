@@ -6,7 +6,7 @@ $start = new Core\Event\Manager;
 $start->start();
 $ins = new \Core\Router\Router;
 //$ins ->install();
-echo 1;
+//echo 1;
 
 /**
  * install
