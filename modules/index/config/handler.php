@@ -6,6 +6,9 @@ class Handler
     
     public function index()
     {
-        //echo "1";
+        $value="index";
+        $result = new \Core\Show\View;
+        $result->add("name_param", $value);
+        $result->view("/modules/index/view/front/temp.php");
     }
 }
