@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 72px;
+    background-color: #151515;
+    position: fixed;
+}
+
+nav {
+    width: calc(100% - 50px);
+    margin: 0 25px;
+    color: #fefefe;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex1 {
+    flex-grow: 1;
+}
+
+.flex2 {
+    flex-grow: 2;
+}
+
+.flex3 {
+    flex-grow: 3;
+}
+
+.flex4 {
+    flex-grow: 4;
+}
+
+.flex5 {
+    flex-grow: 5;
+}
+
+.flex6 {
+    flex-grow: 6;
+}
+
+.flex7 {
+    flex-grow: 7;
+}
+
+.flex8 {
+    flex-grow: 8;
+}
+
+.flex9 {
+    flex-grow: 9;
+}
+
+.flex10 {
+    flex-grow: 10;
+}
+
+.flex11 {
+    flex-grow: 11;
+}
+
+.flex12 {
+    flex-grow: 12;
+}
+
+.nav_element {
+    flex-grow: 1;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.login {
+    background-color: #ff4936;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    margin: 12px auto;
+    border: 2px solid #ff4936;
+    width: 130px;
+    font-weight: 900;
+}
+
+.login:hover {
+    background-color: #fa5e4c;
+    border: 2px solid #ff4936;
+}
+
+.nav_element {
+    margin: 24px 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
