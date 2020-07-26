@@ -26,7 +26,7 @@ class Create extends Orm
     {
         $this->type = "create";
         $this->table_name = $table_name;
-        $this->add("id", "INT", $id_leng, "", "Идентификатор","UNSIGNED AUTO_INCREMENT PRIMARY KEY");
+        $this->add("id", "INT", $id_leng, "NOT NULL", "Идентификатор"," AUTO_INCREMENT ");
         return $this;
 
     }
@@ -76,7 +76,11 @@ class Create extends Orm
     public function addDefault($default)
     {
         if($default != null){
-            $this->default[] = $default; 
+            if($default == "fix"){
+            $this->default[] = "";
+            }else{
+                $this->default[] = $default;
+            }
         }else{
             $this->default[] = "NULL";
         }  

@@ -18,7 +18,7 @@ class Router
         ->add("url","VARCHAR","255","not null","Урл страницы")
         ->add("class","VARCHAR","255","not null","Класс страницы")
         ->add("func","VARCHAR","255","not null","Функия вызова")
-        ->add("Описание","text","","Описание","Описание адреса");
+        ->add("Описание","text","","","Описание");
         $dd ->execute();
     }
     public static function redirectToSlash($url)

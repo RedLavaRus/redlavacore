@@ -191,7 +191,7 @@ class Orm
                 $x=0;
             do{
                 $x != 0 ? $this->query .= " , " : $this->query .="";
-                $this->query .= " ".$this->name[$x];
+                $this->query .= " `".$this->name[$x]."` ";
                 $this->query .= " ". $this->type_var[$x];
                 $this->query .= " (".$this->lang[$x].")";
                 if ($this->default[$x] != null) {
@@ -200,13 +200,13 @@ class Orm
                 if ($this->comment[$x] != null) {
                     $this->query .= " COMMENT ' ".$this->comment[$x]." ' ";
                 }
-                if ($this->tribut[$x] != null) {
-                    $this->query .= $this->tribut[$x];
+                if ($this->atribut[$x] != null) {
+                    $this->query .= $this->atribut[$x];
                 }
                 $x++;
             }while($this->name[$x]);
-            $this->query .= " )";
-
+            $this->query .= " , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+            echo $this->query;
 
             $this->execute = $this->pdo->prepare($this->query);
             $this->execute->execute();
