@@ -7,7 +7,9 @@ use CFG;
 use PDO;
 use Core\Orm\Orm as Orm;
 
-
+/*
+    Класс для создание таблиц
+    */
 class Create extends Orm
 {
    
@@ -21,7 +23,9 @@ class Create extends Orm
     public $atribut;
 
 
-
+/*
+    Функция креат, отвечает за создание таблицы и уникального ид
+    */
     public function create($table_name, $id_leng = 9)
     {
         $this->type = "create";
@@ -30,6 +34,9 @@ class Create extends Orm
         return $this;
 
     }
+    /*
+    Добавление столбца в базу данных
+    */
     public function add($name = null, $type = null, $lang = null , $default = null, $comment = null, $atribut = null)
     {
         $this->addName($name);
@@ -40,12 +47,18 @@ class Create extends Orm
         $this->addAtribut($atribut); 
         return $this; 
     }
+    /*
+   Создает рандомное имя
+    */
     public function randName()
     {
         $temp = rand(1,999999);
         $temp = md5($temp);
         return $temp;
     }
+    /*
+    Обработчик имени
+    */
     public function addName($name)
     {
         if($name != null){
@@ -55,6 +68,9 @@ class Create extends Orm
         }
         return ;
     }
+    /*
+    Обработчик типа
+    */
     public function addType($type)
     {
         if($type != null){
@@ -64,6 +80,9 @@ class Create extends Orm
         } 
         return ;
     }
+    /*
+   Обработчик длины
+    */
     public function addLang($lang)
     {
         if($lang != null){
@@ -73,6 +92,9 @@ class Create extends Orm
         }  
         return ;    
     }
+    /*
+    Обработчик стандартного значения
+    */
     public function addDefault($default)
     {
         if($default != null){
@@ -86,6 +108,9 @@ class Create extends Orm
         }  
         return ;    
     }
+    /*
+    Обработчик коментария
+    */
     public function addComment($comment)
     {
         if($comment != null){
@@ -95,6 +120,9 @@ class Create extends Orm
         }  
         return ;    
     }
+    /*
+    Обработчик атрибутов
+    */
     public function addAtribut($atribut)
     {
         if($atribut != null){

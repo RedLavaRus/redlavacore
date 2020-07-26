@@ -18,7 +18,9 @@ class Orm
     public $pdo;
     public $execute;
     public $array;
-
+/*
+    Инициация орм объекта
+    */
     public function __construct()
     {
         $this->_self_class = get_class($this);
@@ -31,14 +33,18 @@ class Orm
         $this->pdo->exec("SET CHARSET ".CFG::$db_code);
         return $this;
     }
-    
+    /*
+    Выборка из бд
+    */
     public function select($field)
     {
         $this->type = "select";
         $this->field = $this->strToArray($field, ",");
         return $this;
     }
-    
+    /*
+    Обновление бд
+    */
     public function update($value)
     {
         $this->type = "update";
@@ -48,7 +54,8 @@ class Orm
         }
         return $this;
     }
-    
+    /*
+    Вставка в бд*/
     public function insert($value)
     {
         $this->type = "insert";
@@ -58,19 +65,25 @@ class Orm
         }
         return $this;
     }
-    
+    /*
+    Удаление из бд
+    */
     public function delete()
     {
         $this->type = "delete";
         return $this;
     }
-
+/*
+    Обработчик условия фром
+    */
     public function from($table)//m = 1, n =2
     {
         $this->table = $table;
         return $this;
     }
-
+/*
+    Обработчик условия вхере
+    */
     public function where($value)
     {
         $res = $this->strToArray($value, ",");
@@ -81,7 +94,9 @@ class Orm
     }
     
 
-
+/*
+    Приведение строки к массиву
+    */
     public function strToArray($str, $char)
     {
         $rd = explode($char, $str);//m = 1, n =2
@@ -96,7 +111,9 @@ class Orm
     }
 
 
-
+/*
+    Выполнение запроса
+    */
     public function execute()
     {
         if ($this->type == "select") {
@@ -214,12 +231,17 @@ class Orm
         }
         return $this;
     }
-    
+    /*
+    Выполнение фетч
+    */
     public function fetch()
     {
         $this->array = $this->execute->fetch(PDO::FETCH_ASSOC);
         return $this;
     }
+    /*
+   Приведение результата к объекту
+    */
     public function object()
     {
         do{

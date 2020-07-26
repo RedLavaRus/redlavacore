@@ -7,9 +7,14 @@ use \CFG;
 use \Core\Func\URL as URL;
 use \Core\Router\Router as Router;
 use \Core\Values\Val as Val;
-
+  /*
+  Менеджер, отвечает за порядок запуска функций
+  */
 class Manager
-{
+{  
+    /*
+    Функция старт, отвечает за порядок запуска функций в движке
+    */
     public function start()
     {
         $this->debag();//запуск дебагера
@@ -20,14 +25,18 @@ class Manager
         $this->run($obj_class_fun);//Выполнения класса
     }
 
-//Включение дебага
+/*
+    Включение дебага
+    */
     public function debag()
     {
         CFG::debag(CFG::$debag);
         return $this;
     }
 
-// Подключение библеотек
+/*
+    Подключение библеотек в страницу, согласно типу страници
+    */
     public function connectLib($url)
     {
         switch ($url["url"]["0"]){
@@ -46,7 +55,9 @@ class Manager
         Val::addHead($var_head);
     }
 
-//Запуск класса назначения
+/*
+    Запуска класса и функции
+    */
     public function run($run)
     {
         $class_name = $run["class"];
