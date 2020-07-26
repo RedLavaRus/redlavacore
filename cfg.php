@@ -12,6 +12,8 @@ class CFG
     public static $db_code = "utf8";//Порт базы данных
     public static $debag   =true;//Порт базы данных
     public static $auth_type   = "Def";//Порт базы данных
+    public static $minimum_login  = 4;//Минимальная длина логина
+    public static $minimum_password   = 8;//Минимальная длина пароля
 
     public static function debag($status = true){
         if($status)

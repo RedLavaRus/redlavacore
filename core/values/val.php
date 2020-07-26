@@ -19,6 +19,7 @@ class Val
     public static $post_footer;
 
     public static $errors;
+    public static $er;
 
 
 
