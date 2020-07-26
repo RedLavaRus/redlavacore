@@ -54,18 +54,25 @@ class Router
 
     public static function rout($url)
     {
+        if($url["url"][0] == "instal"){
+            self::instails();
+        }
         if(!isset($url["url"]) ) $url["url"][] = "/";
         $res_url="";
         foreach($url["url"] as $u){
             $res_url .= $u;
             if (end($url["url"]) != $u) $res_url .= "/";
         }
-        
         $dd = new Orm();
         $dd -> select("*")
         ->from("router")
         ->where("url = ".$res_url)
         ->execute()->object();
         return $dd->object[0];
+    }
+    public static function instails()
+    {
+        include $_SERVER['DOCUMENT_ROOT']."/install.php";
+        die();
     }
 }

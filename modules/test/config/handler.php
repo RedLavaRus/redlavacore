@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Index\Config;
+namespace Modules\Test\Config;
 
 class Handler
 {
@@ -10,6 +10,6 @@ class Handler
         $result = new \Core\Show\View;
         
         $result->add("name_param", $value);
-        $result->view("/modules/index/view/front/temp.php");
+        $result->view("/modules/test/view/front/temp.php");
     }
 }

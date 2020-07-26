@@ -11,6 +11,7 @@ class CFG
     public static $db_port = "3306";//Порт базы данных
     public static $db_code = "utf8";//Порт базы данных
     public static $debag   =true;//Порт базы данных
+    public static $auth_type   = "Def";//Порт базы данных
 
     public static function debag($status = true){
         if($status)
