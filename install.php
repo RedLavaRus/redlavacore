@@ -3,7 +3,8 @@
 //$i = new \Core\Router\Router;
 //$i -> install();
 //unset($i);
-$i = new \Core\User\Def;
+echo 1;
+$i = new \Modules\User\Config\Init;
 $i -> install();
 unset($i);
 //install modules
