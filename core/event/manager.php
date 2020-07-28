@@ -22,7 +22,7 @@ class Manager
         $this->connectLib($url);// подключение библиотек
         Router::redirectToSlash($url);// перенаправление с url на url/
         $obj_class_fun = Router::rout($url); // Получение класса и функции запускаемого экземпляра
-        $this->run($obj_class_fun);//Выполнения класса
+        $this->run($obj_class_fun,$url);//Выполнения класса
     }
 
 /*
@@ -58,12 +58,12 @@ class Manager
 /*
     Запуска класса и функции
     */
-    public function run($run)
+    public function run($run,$url)
     {
         $class_name = $run["class"];
         $function_name =$run["func"];
         $class_is = new $class_name;
-        $class_is -> $function_name();
+        $class_is -> $function_name($url);
 
     }
 }
