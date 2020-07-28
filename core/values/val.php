@@ -1,9 +1,9 @@
 <?php
 
 namespace Core\Values;
-/**
- * 
- */
+/*
+    класс значений и формирования структуры страницы
+    */
 class Val
 {
     public static $pre_head;

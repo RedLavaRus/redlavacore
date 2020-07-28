@@ -6,11 +6,13 @@ use \CFG;
 use \Core\Values\Val as Val;
 
 /*
-В обработчик поступает запись соответсвий 
-url - модуль - класс - контролер
-*/
+    класс обработки автоизации
+    */
 class Auth
 {
+    /*
+   Способ авторизации
+    */
     public function auth($login,$pass,$ip)
     {
         $class = "\\Core\\User\\" . CFG::$auth_type;

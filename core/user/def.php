@@ -7,11 +7,12 @@ use Core\Orm\Create as Create;
 use Core\User\User as User;
 
 /*
-В обработчик поступает запись соответсвий 
-url - модуль - класс - контролер
-*/
+    Обработка авторизации по умолчанию
+    */
 class Def
-{
+{/*
+    Создание таблицы для пользователей
+    */
     public function install()
     {
         $dd = new Create();
@@ -23,6 +24,9 @@ class Def
         ->add("date_reg","VARCHAR","255","not null","дата регистрации");
         $dd ->execute();
     }
+    /*
+    Регистрация пользователя
+    */
     public function register($login,$pass,$pass2,$ip,$mail)
     {
         //Проверить логин
@@ -34,8 +38,14 @@ class Def
         //Проверить Дату
         //Проверить Выполнить регистрацию
     }
+    /*
+   авторизация пользователя
+    */
     public function auth($login,$pass,$ip)
     {
         
     }
+    /*
+   Завершение сессии
+    */
 }

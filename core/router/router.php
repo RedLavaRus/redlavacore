@@ -6,11 +6,13 @@ use Core\Orm\Orm as Orm;
 use Core\Orm\Create as Create;
 
 /*
-В обработчик поступает запись соответсвий 
-url - модуль - класс - контролер
-*/
+   Класс роутер, отвечает за перенапревление к классу согласно урлки
+    */
 class Router
 {
+    /*
+    Функция установки роутера
+    */
     public function install()
     {
         $dd = new Create();
@@ -21,6 +23,9 @@ class Router
         ->add("Описание","text","","","Описание");
         $dd ->execute();
     }
+    /*
+    Перенаправление на страницу с окончанием в юрл на слеш
+    */
     public static function redirectToSlash($url)
     {
         $url_timed = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -30,7 +35,9 @@ class Router
         }
         return;
     }
-
+/*
+    Переадресация
+    */
     public static function createRedirectUrl($url)
     {
         $addres = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') .  '://' . $_SERVER['HTTP_HOST'] . "/";
@@ -51,7 +58,9 @@ class Router
         return $addres;
     }
 
-
+/*
+   Функция перенаправления и запуска класса
+    */
     public static function rout($url)
     {
         if($url["url"][0] == "instal"){
@@ -64,12 +73,15 @@ class Router
             if (end($url["url"]) != $u) $res_url .= "/";
         }
         $dd = new Orm();
-        $dd -> select("*")
+        $dd -> select("class,func")
         ->from("router")
         ->where("url = ".$res_url)
         ->execute()->object();
         return $dd->object[0];
     }
+    /*
+    Запуск страницы установки
+    */
     public static function instails()
     {
         include $_SERVER['DOCUMENT_ROOT']."/install.php";
