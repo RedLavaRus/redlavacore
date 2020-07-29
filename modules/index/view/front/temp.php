@@ -48,8 +48,9 @@ Core\Func\HTML::footer();
             </div>
             <div class="flex4">
             </div>
-            <div class="flex2">
+            <div class="flex2 flex">
                 <div class="login">ВХОД</div>
+                <div class="reg">РЕГИСТРАЦИЯ</div>
             </div>
         </nav>
 

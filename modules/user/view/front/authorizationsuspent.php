@@ -10,5 +10,5 @@
             Запомнить меня
           </label>
         </p>
-        <p class="submit"><input type="submit" name="commit" value="Зарегистрироваться"></p>
+        <p class="submit"><input type="submit" name="commit" value="ВОЙТИ"></p>
       </form>

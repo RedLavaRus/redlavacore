@@ -96,13 +96,27 @@ nav {
     padding: 8px 2px 4px 2px;
     text-align: center;
     font-size: 18px;
-    margin: 16px auto;
+    margin: 16px 20px;
     border: 2px solid #ff4936;
-    width: 130px;
+    max-width: 130px;
     font-weight: 100;
-    font-family: 'bebas';
+    font-family: 'bebas';flex-grow: 1;
 }
-
+.reg {
+    background-color: #ff4936;
+    padding: 8px 2px 4px 2px;
+    text-align: center;
+    font-size: 18px;
+    margin: 16px 20px;
+    border: 2px solid #ff4936;
+    max-width: 130px;
+    font-weight: 100;
+    font-family: 'bebas';flex-grow: 1;
+}
+.reg:hover {
+    background-color: #fa5e4c;
+    border: 2px solid #ff4936;
+}
 .login:hover {
     background-color: #fa5e4c;
     border: 2px solid #ff4936;

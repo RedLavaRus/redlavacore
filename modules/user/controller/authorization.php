@@ -23,11 +23,22 @@ class Authorization
             
               if($orm->object[0]["id"] >= 1){
                 $_SESSION["id"] = $orm->object[0]["id"];
+                $url["post"] = null;
+        $result = new \Core\Show\View;  
+        $result->add("name_param", 2);
+        $result->view("/modules/user/view/front/authorizationsuspent.php");
               }
             
         };
-        $result = new \Core\Show\View;  
-        $result->add("name_param", 2);
-        $result->view("/modules/user/view/front/authorization.php");
+
+        if($_SESSION["id"] >= 1)
+        {
+          //вход выполнен
+        }else{
+          $result = new \Core\Show\View;  
+          $result->add("name_param", 2);
+          $result->view("/modules/user/view/front/authorization.php");
+
+        }
     }
 }

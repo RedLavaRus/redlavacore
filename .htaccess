@@ -1,4 +1,6 @@
 RewriteEngine On
 RewriteBase /
-
-RewriteRule ^(.*)$ index.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+RewriteRule ^/css/(.*).css$ css/$1.css [L,QSA]
