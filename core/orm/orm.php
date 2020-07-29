@@ -29,7 +29,7 @@ class Orm
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
-        $this->pdo = new PDO("mysql:host=".CFG::$db_host." ;dbname=".CFG::$db_name, CFG::$db_user, CFG::$db_pass, $opt);
+        $this->pdo = new PDO("mysql:host=".CFG::$db_host.":3306 ;dbname=".CFG::$db_name, CFG::$db_user, CFG::$db_pass, $opt);
         $this->pdo->exec("SET CHARSET ".CFG::$db_code);
         return $this;
     }

@@ -9,9 +9,10 @@ class Check
 {
     public function  chech($post)
     {
-        //var_dump($post);
+        var_dump("<pre>",$post,"</pre>");
         $res1 = $this->login($post["login"]);
-        //var_dump($res1);
+        $res2 = $this->password($post["password1"],$post["password2"]);
+        var_dump($res1);
         
     }
    /*
@@ -44,5 +45,33 @@ class Check
         if($ld->object == null) return "ok";
         Val::$er = "Логин занят";
         return false;
+    }
+    public function password($pass1,$pass2)
+    {
+        $this->equivalent($pass1,$pass2);
+        $this->passStrlen($pass1);
+    }
+
+    
+    public function equivalent($pass1,$pass2)
+    {
+        if($pass1 != $pass2)
+        {
+            Val::$er = "Пароли не совпадают";
+            return false;
+        }
+    }
+
+    
+    public function passStrlen($pass1)
+    {
+        if(strlen($$pass1) > 40) {
+            Val::$er = "Максимальная длинна пароля 40 символов";
+            return false;
+        }
+        if(strlen($$pass1) < CFG::$minimum_password) {
+            Val::$er = "Минимальная длинна пароля ".$minimum_password." символов";
+            return false;
+        }
     }
 }

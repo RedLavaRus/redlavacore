@@ -5,8 +5,8 @@
 class CFG
 {
     public static $db_name = 'redlava';//Название базы данных
-    public static $db_user = "ph";//Пользователь базы данных
-    public static $db_pass = "ph1234PH";//Пароль от базы данных
+    public static $db_user = "root";//Пользователь базы данных
+    public static $db_pass = "root";//Пароль от базы данных
     public static $db_host = "127.0.0.1";//Адрес базы данных
     public static $db_port = "3306";//Порт базы данных
     public static $db_code = "utf8";//Порт базы данных
