@@ -9,11 +9,16 @@ class Check
 {
     public function  chech($post)
     {
+        $res= null;
         var_dump("<pre>",$post,"</pre>");
-        $res1 = $this->login($post["login"]);
-        $res2 = $this->password($post["password1"],$post["password2"]);
-        $res1 = $this->mail($post["mail"]);
-        var_dump($res1);
+
+        $res[] = $this->login($post["login"]);
+        $res[] = $this->password($post["password1"],$post["password2"]);
+        $res[] = $this->mail($post["mail"]);
+        $hash =  $this->hashing($post["login"],$post["password1"]);
+
+        var_dump($res);
+        var_dump(Val::$er);
         
     }
    /*
@@ -71,9 +76,10 @@ class Check
             return false;
         }
         if(strlen($pass1) < CFG::$minimum_password) {
-            Val::$er = "Минимальная длинна пароля ".$minimum_password." символов";
+            Val::$er = "Минимальная длинна пароля ".CFG::$minimum_password." символов";
             return false;
         }
+        return "ok";
     }
 
     
@@ -89,5 +95,16 @@ class Check
             Val::$er = "формат почтового ящика неправильный";
             return false;
         }
+        return "ok";
+    }
+
+    
+    public function hashing($login, $pass)
+    {
+        $hash = strlen($login).$login.strlen($pass).hash('sha256', $pass);
+        $hash = hash('sha256', $hash);
+        $hash =  $login.$hash.strlen($pass).hash('sha256', $pass).hash('sha256', $login);
+        $hash = hash('sha256', $hash);
+        return $hash;
     }
 }
