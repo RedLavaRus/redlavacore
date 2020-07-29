@@ -1,6 +1,8 @@
 <?php
 namespace Modules\User\Controller;
 
+use Core\Orm\Orm as Orm;
+
 class Register
 {
     
@@ -20,6 +22,40 @@ class Register
     }
     public function getRegister($check_data)
     {
+        $error = null;
         var_dump("<pre>",$check_data,"</pre>");
+        foreach($check_data["res"] as $res){
+            if($res != "ok") $error = "error!";
+        }
+        if($error != "error!")
+        {
+                $login = $check_data["post"]["login"];
+                $pass = $check_data["post"]["password1"];
+                $mail = $check_data["post"]["mail"];
+            
+                $date = time();
+                $ipuser = $this-> getIP();
+
+                $orm = new Orm;
+                $orm ->insert("
+                login = $login, 
+                password = $pass, 
+                email = $mail, 
+                ip_reg = $ipuser, 
+                date_reg = $date
+                ")->from("users")->execute();
+                echo 1;
+
+        }
     }
+    function getIP() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+          $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+          $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+      }
 }
