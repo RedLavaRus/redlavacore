@@ -17,11 +17,10 @@ class Handler
         $result -> index($url);
 
     }
-    public function authorization()
+    public function authorization($url)
     {
         
-        $result = new \Core\Show\View;  
-        $result->add("name_param", 2);
-        $result->view("/modules/user/view/front/authorization.php");
+        $result = new \Modules\User\Controller\Authorization;  
+        $result -> index($url);
     }
 }

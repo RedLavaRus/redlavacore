@@ -30,7 +30,7 @@ class Register
         if($error != "error!")
         {
                 $login = $check_data["post"]["login"];
-                $pass = $check_data["post"]["password1"];
+                $pass = $check_data["hash"];
                 $mail = $check_data["post"]["mail"];
             
                 $date = time();
@@ -48,7 +48,7 @@ class Register
 
         }
     }
-    function getIP() {
+    public function getIP() {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
           $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -57,5 +57,5 @@ class Register
           $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
-      }
+    }
 }

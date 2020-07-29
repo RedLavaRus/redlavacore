@@ -17,6 +17,7 @@ class Manager
     */
     public function start()
     {
+        session_start();//Запуск сессии
         $this->debag();//запуск дебагера
         $url = URL::urlToArray();
         $this->connectLib($url);// подключение библиотек
