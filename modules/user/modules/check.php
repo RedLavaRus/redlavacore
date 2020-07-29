@@ -10,15 +10,15 @@ class Check
     public function  chech($post)
     {
         $res= null;
-        var_dump("<pre>",$post,"</pre>");
 
         $res[] = $this->login($post["login"]);
         $res[] = $this->password($post["password1"],$post["password2"]);
         $res[] = $this->mail($post["mail"]);
         $hash =  $this->hashing($post["login"],$post["password1"]);
+        $check_data["res"] = $res;
+        $check_data["hash"] = $hash;
 
-        var_dump($res);
-        var_dump(Val::$er);
+        return $check_data;
         
     }
    /*
@@ -54,8 +54,10 @@ class Check
     }
     public function password($pass1,$pass2)
     {
-        $this->equivalent($pass1,$pass2);
-        $this->passStrlen($pass1);
+        if($this->equivalent($pass1,$pass2)){
+        return $this->passStrlen($pass1);
+        }
+        return false;
     }
 
     
@@ -66,6 +68,7 @@ class Check
             Val::$er = "Пароли не совпадают";
             return false;
         }
+        return true;
     }
 
     
