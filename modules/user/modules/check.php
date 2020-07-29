@@ -12,6 +12,7 @@ class Check
         var_dump("<pre>",$post,"</pre>");
         $res1 = $this->login($post["login"]);
         $res2 = $this->password($post["password1"],$post["password2"]);
+        $res1 = $this->mail($post["mail"]);
         var_dump($res1);
         
     }
@@ -65,12 +66,27 @@ class Check
     
     public function passStrlen($pass1)
     {
-        if(strlen($$pass1) > 40) {
+        if(strlen($pass1) > 40) {
             Val::$er = "Максимальная длинна пароля 40 символов";
             return false;
         }
-        if(strlen($$pass1) < CFG::$minimum_password) {
+        if(strlen($pass1) < CFG::$minimum_password) {
             Val::$er = "Минимальная длинна пароля ".$minimum_password." символов";
+            return false;
+        }
+    }
+
+    
+    public function mail($mail)
+    {
+        if(strlen($mail) < 6)
+        {
+            Val::$er = "Заполните почту";
+            return false;
+        }
+        if( filter_var($mail, FILTER_VALIDATE_EMAIL) === false)
+        {
+            Val::$er = "формат почтового ящика неправильный";
             return false;
         }
     }
