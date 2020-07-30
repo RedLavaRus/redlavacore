@@ -1,23 +1,10 @@
-<?php
-/*
-Core\Func\HTML::start();
-Core\Func\HTML::head();
-Core\Func\HTML::startBody();
-Core\Func\HTML::nav();
-Core\Func\HTML::header();
-
-
-
-
-
-Core\Func\HTML::aside();
-Core\Func\HTML::footer();
-*/
-
-?>
 <!DOCTYPE HTML>
 <html lang="ru">
     <head>
+        
+<?php echo \Core\Values\Val::returnHead("pre");?>
+<?php echo \Core\Values\Val::returnHead(NULL);?>
+<?php echo \Core\Values\Val::returnHead("post");?>
         <title>Test</title>
 
         <meta charset="UTF-8">
@@ -30,7 +17,9 @@ Core\Func\HTML::footer();
         <link rel="icon" sizes="192x192" href="">
     </head>
     <body>
-
+<?php echo \Core\Values\Val::returnBody("pre");?>
+<?php echo \Core\Values\Val::returnBody(NULL);?>
+<?php echo \Core\Values\Val::returnBody("post");?>
 
     <header>
 
@@ -66,7 +55,9 @@ Core\Func\HTML::footer();
     <aside>
     </aside>
 
-    <footer>
-    </footer>
+
+<?php echo \Core\Values\Val::returnFooter("pre");?>
+<?php echo \Core\Values\Val::returnFooter(NULL);?>
+<?php echo \Core\Values\Val::returnFooter("post");?>
     </body>
 </html>
