@@ -5,16 +5,15 @@
 <?php echo \Core\Values\Val::returnHead("pre");?>
 <?php echo \Core\Values\Val::returnHead(NULL);?>
 <?php echo \Core\Values\Val::returnHead("post");?>
-        <title>Test</title>
+        
 
-        <meta charset="UTF-8">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
         <meta name="theme-color" content="#ff0000">
 
         <link rel="stylesheet" href="/res/css/default.css">
         <link rel="icon" sizes="192x192" href="">
+
     </head>
     <body>
 <?php echo \Core\Values\Val::returnBody("pre");?>
