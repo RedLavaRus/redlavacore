@@ -4,9 +4,12 @@
 //$i -> install();
 //unset($i);
 echo 1;
-$i = new \Modules\User\Config\Init;
-$i -> install();
-unset($i);
+//$i = new \Modules\User\Config\Init;
+//$i -> install();
+//unset($i);Seo
+//$i = new \Core\Seo\Seo;
+//$i -> install();
+//unset($i);
 //install modules
 
 
