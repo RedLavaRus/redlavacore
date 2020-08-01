@@ -3,11 +3,22 @@
     src: url('/res/fonts/bebas.ttf');
 }
 
+@font-face {
+    font-family: 'Ubuntu-r';
+    src: url('/res/fonts/ubuntu/Ubuntu-R.ttf');
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
     padding: 0;
     margin: 0;
-    font-family: 'bebas';
+    font-family: 'Ubuntu-r';
     display: flex;
+    background-color: #3a4552;
 }
 
 .a_menuLvl1 {
@@ -16,6 +27,16 @@ body {
     min-height: 100vh;
     color: #fff;
     flex-wrap: nowrap;
+}
+
+.a_menuLvl2 {
+    background-color: #151515;
+    width: 250px;
+    min-height: 100vh;
+    color: #fff;
+    flex-wrap: nowrap;
+    position: absolute;
+    display: none;
 }
 
 .a_head_menu {
@@ -30,7 +51,7 @@ body {
     width: 90%;
     text-align: left;
     padding: 20px 0 15px 10%;
-    font-size: 18px;
+    font-size: 16px;
     border-bottom: 1px solid #323232;
 }
 
@@ -40,8 +61,8 @@ body {
 
 .a_topnav {
     width: calc(100vw - 250px);
-    height: 84px;
-    background-color: rgb(195, 243, 255);
+    background-color: #2cabe2;
+    color: #eaf7fd;
     border-bottom: 1px solid #999;
 }
 
@@ -49,13 +70,15 @@ body {
     height: 48px;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap
+    flex-wrap: nowrap;
+    margin: 0 0 5px 0;
 }
 
 .a_top_nav_line2 {
     height: 36px;
     display: flex;
     flex-direction: row-reverse;
+    margin: 0 0 5px 0;
 }
 
 .a_clear_cash {
@@ -64,6 +87,8 @@ body {
     border-radius: 3px;
     padding: 10px;
     margin: 5px 10px;
+    background-color: #fefefe;
+    color: #151414;
 }
 
 .a_go_website {
@@ -72,16 +97,19 @@ body {
     border-radius: 3px;
     padding: 10px;
     margin: 5px 10px;
+    background-color: #fefefe;
+    color: #151414;
 }
 
 .a_login {
-    width: 238px;
-    margin: 0 10px;
-    border: 1px solid #999;
+    min-width: 238px;
     border-radius: 30px;
-    padding: 10px;
-    margin: 5px 10px;
+    padding: 3px 20px;
+    margin: 10px 10px;
+    height: 20px;
     justify-content: flex-end;
+    background-color: #fefefe;
+    color: #151414;
 }
 
 .a_flex_1 {
@@ -125,10 +153,11 @@ body {
 }
 
 .a_top_nav_el_def {
-    padding: 5px 10px;
+    padding: 3px 10px;
     margin: 5px 10px;
     min-width: 100px;
     border-radius: 30px;
-    border: 1px solid #999;
     text-align: center;
+    background-color: #fefefe;
+    color: #151414;
 }

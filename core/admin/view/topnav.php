@@ -1,7 +1,10 @@
+<?php
+include "menulvl2.php";
+?>
 <div class="a_topnav">
     <div class="a_top_nav_line1">
         <div class="a_clear_cash">Очистить</div>
-        <div class="a_go_website">Перейти</div>
+        <a href="/"><div class="a_go_website">Перейти</div></a>
         <div class="a_flex_4"></div>
         <div class="a_login">Админестратор тезнической поддержки</div>
     </div>
