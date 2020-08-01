@@ -100,8 +100,10 @@ nav {
     border: 2px solid #ff4936;
     max-width: 130px;
     font-weight: 100;
-    font-family: 'bebas';flex-grow: 1;
+    font-family: 'bebas';
+    flex-grow: 1;
 }
+
 .reg {
     background-color: #ff4936;
     padding: 8px 2px 4px 2px;
@@ -111,12 +113,15 @@ nav {
     border: 2px solid #ff4936;
     max-width: 130px;
     font-weight: 100;
-    font-family: 'bebas';flex-grow: 1;
+    font-family: 'bebas';
+    flex-grow: 1;
 }
+
 .reg:hover {
     background-color: #fa5e4c;
     border: 2px solid #ff4936;
 }
+
 .login:hover {
     background-color: #fa5e4c;
     border: 2px solid #ff4936;
@@ -139,13 +144,16 @@ nav {
     right: 0;
     z-index: 99999;
 }
+
 .modal_vis {
     display: block;
 }
+
 .body_block {
     overflow: hidden;
     margin-right: 17px;
 }
+
 #close_modal {
     color: #BFE2FF;
     font-size: 40px;
@@ -165,12 +173,14 @@ nav {
     transition: all 0.6s;
     box-sizing: content-box;
 }
+
 #close_modal:hover {
     color: #FFF;
     transform: rotate(135deg);
 }
+
 .modal_txt {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
     background: #FFF;
     padding: 30px;
     margin: 100px auto;

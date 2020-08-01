@@ -10,6 +10,6 @@ class Handler
         $result = new \Core\Show\View;
         
         $result->add("name_param", $value);
-        $result->view("/modules/index/view/front/temp.php");
+        $result->view("/modules/index/view/front/index.php");
     }
 }

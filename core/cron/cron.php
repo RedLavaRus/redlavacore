@@ -1,5 +1,5 @@
 <?php
-namecpase /Core/Cron/Cron;
+namespace Core\Cron;
 
   /*
   Класс крон, отвечает за автозапуск приложений через крон
