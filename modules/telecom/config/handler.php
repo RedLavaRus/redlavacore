@@ -17,4 +17,14 @@ class Handler
         $page = new \Modules\Telecom\Controller\Internet;
         $page->internet($url);
     }
+    public function InternetITv($url)
+    {
+        $page = new \Modules\Telecom\Controller\InternetITv;
+        $page->internet($url);
+    }
+    public function mobilnayaSvyaz($url)
+    {
+        $page = new \Modules\Telecom\Controller\InternetITv;
+        $page->internet($url);
+    }
 }

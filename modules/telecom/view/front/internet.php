@@ -1,6 +1,7 @@
 <?php
 
 $var = \Core\Show\View::$var;
+
 ?>
 
 <div class="linsloge4">
@@ -9,98 +10,12 @@ $var = \Core\Show\View::$var;
     </div>
     
 <div class="tp_box">
+        <?php
+        $tp= new \Modules\Telecom\Modules\Tarifs;
+        $tp->showTP($var["tarifs"]->object);
+
+?>
         
-        <div class="tp_box_in">
-            <div class="tp_box_lect">
-                <div class="tp_box_lect_ect">АКЦИЯ</div>
-            </div>
-            <div class="tp_box_name">
-                Простой <br><br>
-            </div>
-            <div class="tp_box_opis">
-
-                <b>100</b> Мбит/сек<br>
-            </div>
-            <div class="tp_box_prise">
-            
-                <b>150</b> <small><small> руб/мес </small></small>
-            </div>
-            <a href="/connect/1">
-                <div class="tp_box_connect">
-                    ПОДКЛЮЧИТЬ
-                </div>
-            </a>
-
-        </div>
-                
-        <div class="tp_box_in">
-            <div class="tp_box_lect">
-                <div class="tp_box_lect_ect">АКЦИЯ</div>
-            </div>
-            <div class="tp_box_name">
-                Простой <br><br>
-            </div>
-            <div class="tp_box_opis">
-
-                <b>100</b> Мбит/сек<br>
-            </div>
-            <div class="tp_box_prise">
-            
-                <b>150</b> <small><small> руб/мес </small></small>
-            </div>
-            <a href="/connect/1">
-                <div class="tp_box_connect">
-                    ПОДКЛЮЧИТЬ
-                </div>
-            </a>
-
-        </div>
-                
-        <div class="tp_box_in">
-            <div class="tp_box_lect">
-                <div class="tp_box_lect_ect">АКЦИЯ</div>
-            </div>
-            <div class="tp_box_name">
-                Простой <br><br>
-            </div>
-            <div class="tp_box_opis">
-
-                <b>100</b> Мбит/сек<br>
-            </div>
-            <div class="tp_box_prise">
-            
-                <b>150</b> <small><small> руб/мес </small></small>
-            </div>
-            <a href="/connect/1">
-                <div class="tp_box_connect">
-                    ПОДКЛЮЧИТЬ
-                </div>
-            </a>
-
-        </div>
-                
-        <div class="tp_box_in">
-            <div class="tp_box_lect">
-                <div class="tp_box_lect_ect">АКЦИЯ</div>
-            </div>
-            <div class="tp_box_name">
-                Простой <br><br>
-            </div>
-            <div class="tp_box_opis">
-
-                <b>100</b> Мбит/сек<br>
-            </div>
-            <div class="tp_box_prise">
-            
-                <b>150</b> <small><small> руб/мес </small></small>
-            </div>
-            <a href="/connect/1">
-                <div class="tp_box_connect">
-                    ПОДКЛЮЧИТЬ
-                </div>
-            </a>
-
-        </div>
                 
         
 
