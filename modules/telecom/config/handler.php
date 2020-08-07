@@ -24,7 +24,17 @@ class Handler
     }
     public function mobilnayaSvyaz($url)
     {
-        $page = new \Modules\Telecom\Controller\InternetITv;
+        $page = new \Modules\Telecom\Controller\MobilnayaSvyaz;
         $page->internet($url);
+    }
+    public function connect($url)
+    {
+        $page = new \Modules\Telecom\Controller\Connect;
+        $page->connect($url);
+    }
+    public function zayavka($url)
+    {
+        $page = new \Modules\Telecom\Controller\Zayavka;
+        $page->Invite($url);
     }
 }

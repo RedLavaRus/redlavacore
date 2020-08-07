@@ -30,28 +30,7 @@ class Tarifs
             echo '</div><div class="tp_box">';
             $x=1;
         }
-        echo '<div class="tp_box_in">
-            <div class="tp_box_lect">
-                <br>
-            </div>
-            <div class="tp_box_name">
-            '.$tp["name"].' <br><br>
-            </div>
-            <div class="tp_box_opis">
-
-            '.$tp["opisanie"].'
-            </div>
-            <div class="tp_box_prise">
-            
-                <b>'.$tp["prises"].'</b> <small><small> руб/мес </small></small>
-            </div>
-            <a href="/connect/'.$tp["id"].'">
-                <div class="tp_box_connect">
-                    ПОДКЛЮЧИТЬ
-                </div>
-            </a>
-
-        </div>';
+        $this->showOneTp($tp);
         
         }
         while($x != 4){
@@ -60,5 +39,30 @@ class Tarifs
         }
         
 
+    }
+    public function showOneTp($tp)
+    {
+        echo '<div class="tp_box_in">
+        <div class="tp_box_lect">
+            <br>
+        </div>
+        <div class="tp_box_name">
+        '.$tp["name"].' <br><br>
+        </div>
+        <div class="tp_box_opis">
+
+        '.$tp["opisanie"].'
+        </div>
+        <div class="tp_box_prise">
+        
+            <b>'.$tp["prises"].'</b> <small><small> руб/мес </small></small>
+        </div>
+        <a href="/connect/?tp='.$tp["id"].'">
+            <div class="tp_box_connect">
+                ПОДКЛЮЧИТЬ
+            </div>
+        </a>
+
+    </div>';
     }
 }
