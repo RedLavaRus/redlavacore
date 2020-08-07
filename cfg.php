@@ -21,6 +21,9 @@ class CFG
     public static $mail_login       = "gakman@yandex.ru";   //Адрес отправления почты
     public static $mail_password    = "*******";           //Пароль от почты
 
+    public static $telegram_token       = "432432:432242";
+    public static $telegram_chat        = "42334242";
+
     public static function debag($status = true){
         if($status)
         {
