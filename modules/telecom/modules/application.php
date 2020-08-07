@@ -7,7 +7,13 @@ class Application
 {
     public function connect($url)
     {
-        $tp_nam = $url["get"]["tp"];
+        if(!isset($url["get"]["tp"]))
+        {
+            $tp_nam = $url["post"]["tp"];
+        }else{
+            $tp_nam = $url["get"]["tp"];
+
+        }
 
         $orm = new Orm;
         $tarifs = $orm->select("id,name,opisanie,prises,dop_cods")

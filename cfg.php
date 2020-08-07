@@ -16,6 +16,11 @@ class CFG
     public static $minimum_password   = 8;//Минимальная длина пароля
     public static $salt   = "usy@#2jkw";//Статичная соль
 
+    public static $mail_host        = "smtp.yandex.ru";     //Host почты
+    public static $mail_port        = "465";                //Порт почты
+    public static $mail_login       = "gakman@yandex.ru";   //Адрес отправления почты
+    public static $mail_password    = "*******";           //Пароль от почты
+
     public static function debag($status = true){
         if($status)
         {
