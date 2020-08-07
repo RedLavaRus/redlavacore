@@ -19,12 +19,12 @@ $var = \Core\Show\View::$var;
                      <form action="/connect/zayavka/" method="post">
                 <input name="tp" value="<?php echo $_GET["tp"] ?>" type="hidden">
                 <input name="meneger" value="Алексей" type="hidden">
-                <input name="s1" value="" class="text_adr_p" placeholder="Улица">
-                <input name="s2" value="" class="text_adr_p1" placeholder="Дом">
-                <input name="s3" value="" class="text_adr_p1" placeholder="Квартира">
-                <input name="s4" value="" class="text_adr_p" placeholder="Имя">
-                <input name="s5" value="" class="text_adr_p" placeholder="Фамилия">
-                <input name="s6" value="" class="text_adr_p" placeholder="Телефон">
+                <input name="s1" value="" class="text_adr_p" placeholder="Улица" required>
+                <input name="s2" value="" class="text_adr_p1" placeholder="Дом" required>
+                <input name="s3" value="" class="text_adr_p1" placeholder="Квартира" required>
+                <input name="s4" value="" class="text_adr_p" placeholder="Имя" required>
+                <input name="s5" value="" class="text_adr_p" placeholder="Фамилия" required>
+                <input name="s6" value="" class="text_adr_p" placeholder="Телефон" required>
                 
                 <button  class="butt">Подключиться</button>
             </form>
