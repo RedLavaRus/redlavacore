@@ -16,9 +16,14 @@ class MobilnayaSvyaz
         \Core\Values\Val::returnHead(NULL).
         \Core\Values\Val::returnHead("post");
         $result->add("tarifs", $value);
-        $result->view("/modules/index/view/bloks/headbar.php");
-        $result->view("/modules/index/view/bloks/blockimg.php");
+        $header = new \Modules\Blocks\Modules\Header;
+        $header->index(null);
+        $banner = new \Modules\Blocks\Modules\Banners;
+        $banner->index(null);
         $result->view("/modules/telecom/view/front/internet.php");
-        $result->view("/modules/index/view/bloks/footer.php");
+        $callMe = new \Modules\Blocks\Modules\CallMe;
+        $callMe->index(null);
+        $footer = new \Modules\Blocks\Modules\Footers;
+        $footer->index(null);
     }
 }

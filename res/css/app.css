@@ -137,11 +137,7 @@
         background: url("/img/rd.png");
         width: 100%;
     }
-    .line3 img {
-        width: 80vw;
-        height: 20vw;
-        margin: 0 calc(50% - 40vw);
-    }
+    .line3 img {}
     .linsloge4 {
         width: 1200px;
         margin: 0 auto;

@@ -19,9 +19,14 @@ class Connect
         \Core\Values\Val::returnHead("post");
         $result->add("tarifs", $value);
         $result->add("tp_info", $app_info);
-        $result->view("/modules/index/view/bloks/headbar.php");
-        $result->view("/modules/index/view/bloks/blockimg.php");
+        $header = new \Modules\Blocks\Modules\Header;
+        $header->index(null);
+        $banner = new \Modules\Blocks\Modules\Banners;
+        $banner->index(null);
         $result->view("/modules/telecom/view/front/connect.php");
-        $result->view("/modules/index/view/bloks/footer.php");
+        $callMe = new \Modules\Blocks\Modules\CallMe;
+        $callMe->index(null);
+        $footer = new \Modules\Blocks\Modules\Footers;
+        $footer->index(null);
     }
 }
