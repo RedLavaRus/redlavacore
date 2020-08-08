@@ -18,6 +18,7 @@ class Orm
     public $pdo;
     public $execute;
     public $array;
+    public $atribut;
 /*
     Инициация орм объекта
     */
@@ -142,6 +143,7 @@ class Orm
                     $s++;
                 }
             }
+            if($this->atribut != null) $this->query .= " ".$this->atribut." ";
                 $this->execute = $this->pdo->prepare($this->query);
                 $this->execute->execute($this->query_value);
             return $this;
@@ -173,6 +175,7 @@ class Orm
                     $s++;
                 }
             }
+            if($this->atribut != null) $this->query .= " ".$this->atribut." ";
             $this->execute = $this->pdo->prepare($this->query);
             $this->execute->execute($this->query_value);
             return $this;
@@ -234,6 +237,27 @@ class Orm
     /*
     Выполнение фетч
     */
+    public function limit($start = null, $limit = null)//LIMIT число, число
+    {
+        if($limit != null)
+        {
+            $branch = $start." , ".$limit;
+        }else{
+            $branch = $start;
+        }
+        $this->atribut .= "LIMIT ".$branch." ";
+        return $this;
+    }
+    public function order($name)
+    {
+        $this->atribut .= " ORDER BY `".$name."` ";
+        return $this;
+    }
+    public function desc()
+    {
+        $this->atribut .=" DESC ";
+        return $this;
+    }
     public function fetch()
     {
         $this->array = $this->execute->fetch(PDO::FETCH_ASSOC);

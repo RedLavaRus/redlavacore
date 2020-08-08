@@ -13,7 +13,9 @@ echo 1;
 //install modules
 //$i = new \Modules\Telecom\Config\Init;
 //$i -> install();
-$i = new \Modules\Blocks\Config\Init;
+//$i = new \Modules\Blocks\Config\Init;
+//$i -> install();
+$i = new \Modules\News\Config\Init;
 $i -> install();
 //unset($i);
 
