@@ -6,10 +6,25 @@ class Handler
     
     public function index()
     {
-        $value="index";
         $result = new \Core\Show\View;
+        \Core\Values\Val::addHead('<link rel="stylesheet" href="/res/css/app.css">',"pre");
         
-        $result->add("name_param", $value);
-        $result->view("/modules/index/view/front/index.php");
+                echo
+                \Core\Values\Val::returnHead("pre").
+                \Core\Values\Val::returnHead(NULL).
+                \Core\Values\Val::returnHead("post");
+        
+        $header = new \Modules\Blocks\Modules\Header;
+        $header->index(null);
+        $banner = new \Modules\Blocks\Modules\Banners;
+        $banner->index(null);
+        $telecom = new \Modules\Telecom\Modules\Blocks\TarifsIndex;
+        $telecom->index(null);
+        $news = new \Modules\News\Modules\Blocks\IndexNews;
+        $news->index(null);
+        $callMe = new \Modules\Blocks\Modules\CallMe;
+        $callMe->index(null);
+        $footer = new \Modules\Blocks\Modules\Footers;
+        $footer->index(null);
     }
 }

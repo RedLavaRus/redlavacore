@@ -11,7 +11,9 @@ echo 1;
 //$i -> install();
 //unset($i);
 //install modules
-$i = new \Modules\Telecom\Config\Init;
+//$i = new \Modules\Telecom\Config\Init;
+//$i -> install();
+$i = new \Modules\Blocks\Config\Init;
 $i -> install();
 //unset($i);
 
