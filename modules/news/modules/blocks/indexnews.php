@@ -13,13 +13,12 @@ class IndexNews
             ->from("news_micro")
             ->order("id")
             ->desc()
-            ->limit(6)
-            
+            ->limit(6)            
             ->execute()
             ->object();
-            var_dump("<pre>",$tarifs);
 
         $result = new \Core\Show\View;
+        $result->add("news",$tarifs->object);
         $result->view("/modules/news/view/blocks/news.php");
     }
 }

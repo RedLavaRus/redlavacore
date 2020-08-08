@@ -28,7 +28,7 @@ class Header
        <a href="/internet-i-tv/"><div class="l2_item">Интернет + ТВ</div></a>
        <a href="/internet/"><div class="l2_item">Интернет</div></a>
        <a href="/mobilnaya-svyaz/"><div class="l2_item">Мобильная связь</div></a>
-       <a href="/internet/"><div class="l2_item"> </div></a>
+       <a href="/tv/"><div class="l2_item">Телевидение</div></a>
        <div class="l2_item_r">Подключение в Краснодаре тел.: <b>+7 (960) 49-44-999</b></div>       
        </div> 
     

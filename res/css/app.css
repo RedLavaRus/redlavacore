@@ -260,6 +260,16 @@
         font-size: 18px;
         color: #444;
         height: 60px;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 2;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        display: -webkit-box;
+        display: box;
+        box-orient: vertical;
+        word-wrap: break-word;
     }
     .date_news {
         margin: 20px 20px 20px 20px;
