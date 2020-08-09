@@ -15,7 +15,9 @@ echo 1;
 //$i -> install();
 //$i = new \Modules\Blocks\Config\Init;
 //$i -> install();
-$i = new \Modules\News\Config\Init;
+//$i = new \Modules\News\Config\Init;
+//$i -> install();
+$i = new \Core\User\Init;
 $i -> install();
 //unset($i);
 
