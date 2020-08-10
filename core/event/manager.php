@@ -45,6 +45,8 @@ class Manager
     {
         switch ($url["url"]["0"]){
             case "admin":
+                $pex_ass = new \Core\User\Acsester;
+                $pex_ass->permission("admin");
                 $var_head = '
                 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 <link rel="stylesheet" href="/res/css/admin.css">

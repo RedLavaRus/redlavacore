@@ -32,7 +32,7 @@ class Admin
   }
 
 
-  public function show($url)
+  public function show($show)
   {
 
     echo
@@ -42,6 +42,7 @@ class Admin
     
     echo "<body>";
     $result = new \Core\Show\View;  
+    $result->add("menu",$show["menu"]);
     $result->view("/core/admin/view/menu.php");
     echo "<div class='a_main'>";
     $result = new \Core\Show\View;  

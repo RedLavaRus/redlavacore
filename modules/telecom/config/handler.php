@@ -37,4 +37,8 @@ class Handler
         $page = new \Modules\Telecom\Controller\Zayavka;
         $page->Invite($url);
     }
+    public function adminInternet($url)
+    {
+
+    }
 }

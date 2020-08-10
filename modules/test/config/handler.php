@@ -6,7 +6,6 @@ class Handler
     
     public function index()
     {
-        $ld = new \Core\User\View\login;
-        $ld->showForm();
+       
     }
 }

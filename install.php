@@ -17,9 +17,11 @@ echo 1;
 //$i -> install();
 //$i = new \Modules\News\Config\Init;
 //$i -> install();
-$i = new \Core\User\Init;
+//$i = new \Core\User\Init;
+//$i -> install();
+//unset($i);Core\Admin\Menu
+$i = new Core\Admin\Menu;
 $i -> install();
-//unset($i);
 
 
 ?>

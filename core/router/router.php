@@ -77,6 +77,9 @@ class Router
         ->from("router")
         ->where("url = ".$res_url)
         ->execute()->object();
+
+        if(!isset($dd->object[0]) or $dd->object[0] == null) \Core\Errors\E404::show();
+
         return $dd->object[0];
     }
     /*

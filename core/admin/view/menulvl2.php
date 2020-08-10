@@ -1,15 +1,15 @@
-<div class="a_menuLvl2">
-    <div class="a_element_menu">ТОВАРЫ \ УСЛУГИ</div>
-    <div class="a_element_menu">ВЕБ САЙТ</div>
-    <div class="a_element_menu">МЕДИА</div>
-    <div class="a_element_menu">МОДУЛИ</div>
-    <div class="a_element_menu">РАЗНОЕ</div>
+<?php
+$var = \Core\Show\View::$var;
+//var_dump("<pre>",$var,"</pre>");
 
-
-
-
-
-
-
-
-</div>
+$mdde = new \Core\Admin\Menu;
+foreach($var["menu"] as $menus)
+{
+    echo '<div class="a_menuLvl2 '.$menus.'">';
+    $dd = $mdde -> menuLvl2(substr($menus,6));
+    foreach($dd as $d){
+        echo '<a href ="/admin/'.$d["url"].'/"><div class="a_element_menu">'.$d["ru_name"].'</div></a>';
+    }
+    echo '</div>';
+}
+?>

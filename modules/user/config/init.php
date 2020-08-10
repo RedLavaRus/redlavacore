@@ -9,14 +9,20 @@ class Init
 {
     public function install()
     {
-        $dd = new Create();
-        $dd -> create("users")
-        ->add("login","VARCHAR","255","not null","Логин")
-        ->add("password","VARCHAR","255","not null","Пароль")
-        ->add("email","VARCHAR","255","not null","Емаил")
-        ->add("ip_reg","VARCHAR","255","not null","ип регистрации")
-        ->add("date_reg","VARCHAR","255","not null","дата регистрации");
-        $dd ->execute();
+        
+
+
+        $group = new Create();
+        $group -> create("group_permission")
+        ->add("name","VARCHAR","255","not null","Название группы")
+        ->add("permission","text","","not null","печерень привелегий, через запятую");
+        $group ->execute();
+
+        $group_users = new Create();
+        $group_users -> create("group_users")
+        ->add("user_id","VARCHAR","255","not null","ид пользователя")
+        ->add("group_name","text","","not null","название групп, через запятую");
+        $group_users ->execute();
     }
     public function delete()
     {
