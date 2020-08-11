@@ -39,6 +39,12 @@ class Handler
     }
     public function adminInternet($url)
     {
-
+        $page = new \Modules\Telecom\Controller\Admin\Internet;
+        $page->index($url);
+    }
+    public function ajaxShowTP($url)
+    {
+        $page = new \Modules\Telecom\Modules\Ajax\Internet;
+        $page->index($url);
     }
 }

@@ -60,12 +60,15 @@ class Router
 
 /*
    Функция перенаправления и запуска класса
+ 
     */
     public static function rout($url)
     {
         if($url["url"][0] == "instal"){
             self::instails();
         }
+        if(isset($_GET["go"]) && $_GET["go"] == "ajax")  \Core\Ajax\Ajax::show($url);
+
         if(!isset($url["url"]) ) $url["url"][] = "/";
         $res_url="";
         foreach($url["url"] as $u){

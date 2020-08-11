@@ -161,3 +161,176 @@ body {
     background-color: #fefefe;
     color: #151414;
 }
+
+.a_line_global {
+    width: calc(100% - 60px);
+    margin: 5px 19px;
+    border: 1px solid #575755;
+    padding: 5px 10px;
+    background-color: azure;
+    border-radius: 3px;
+    display: flex;
+    text-align: left;
+}
+
+.fl1 {
+    flex-grow: 1;
+}
+
+.fl2 {
+    flex-grow: 2;
+}
+
+.fl3 {
+    flex-grow: 3;
+}
+
+.fl4 {
+    flex-grow: 4;
+}
+
+.fl5 {
+    flex-grow: 5;
+}
+
+.fl6 {
+    flex-grow: 6;
+}
+
+.fl7 {
+    flex-grow: 7;
+}
+
+.fl8 {
+    flex-grow: 8;
+}
+
+.fl9 {
+    flex-grow: 9;
+}
+
+.fl10 {
+    flex-grow: 10;
+}
+
+.fl11 {
+    flex-grow: 11;
+}
+
+.fl12 {
+    flex-grow: 12;
+}
+
+.box_box {
+    min-height: calc(100vh - 150px);
+}
+
+.nav_panel_bot_line {
+    position: fixed;
+    margin: 0px 0 0 0;
+    bottom: center;
+    height: 50px;
+    width: calc(100% - 250px);
+    background-color: #2cabe2;
+    z-index: 10;
+}
+
+.a_button_bun {
+    display: inline;
+    background-color: azure;
+    padding: 6px 30px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.a_line_global_num {
+    width: 150px;
+}
+
+.a_line_global_name {
+    width: calc(100% - 400px);
+}
+
+.fon_blac_7 {
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    position: absolute;
+    background: url("/res/img/fon/fonBlack80.png");
+    top: 0;
+    left: 0;
+}
+
+.a_tp_box_in {
+    position: fixed;
+    width: 600px;
+    background-color: #fff;
+    top: 120px;
+    left: calc(50vw - 300px);
+}
+
+.tp_box_lect {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.tp_box_lect_ect {
+    border-radius: 0 5px 0 0;
+    width: 80px;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    background-color: #f8a095;
+    text-align: center;
+    color: #f83117;
+}
+
+.tp_box_name {
+    margin: 0 30px 0px 30px;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #9e9cf8;
+    font-weight: bold;
+    font-size: 38px;
+    color: #333;
+}
+
+.tp_box_opis {
+    margin: 10px 30px 0px 30px;
+    padding: 0 0 20px 0;
+    font-size: 32px;
+    color: #333;
+}
+
+.tp_box_prise {
+    font-size: 34px;
+    margin: 10px 30px 0px 30px;
+}
+
+.tp_box_connect {
+    margin: 20px 30px 20px 30px;
+    padding: 10px 20px;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+    font-size: 33px;
+    text-align: center;
+    border: 3px solid red;
+}
+
+.tp_box_connect:hover {
+    margin: 20px 30px 20px 30px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: red;
+    font-weight: bold;
+    font-size: 33px;
+    text-align: center;
+    border: 3px solid red;
+}
+
+.prim {
+    color: #999;
+    width: 650px;
+    margin: 10px auto;
+    font-size: 24px;
+}

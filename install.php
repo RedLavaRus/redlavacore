@@ -1,5 +1,5 @@
 <?php
-echo 1;
+echo "install";
 //install core
 //$i = new \Core\Router\Router;
 //$i -> install();
@@ -20,8 +20,10 @@ echo 1;
 //$i = new \Core\User\Init;
 //$i -> install();
 //unset($i);Core\Admin\Menu
-$i = new Core\Admin\Menu;
-$i -> install();
+//$i = new \Core\Admin\Menu;
+//$i -> install();
+//$i = new Core\Ajax\Ajax;
+//$i -> install();
 
 
 ?>
