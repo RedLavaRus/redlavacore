@@ -186,3 +186,101 @@ nav {
     margin: 100px auto;
     max-width: 800px;
 }
+
+.ty_box {
+    width: 1190px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    display: flex;
+}
+
+.tv_packet_chalenger {
+    margin: 10px;
+    background-color: #151515;
+    width: 380px;
+}
+
+.tv_packet_chalenger h3 {
+    color: #ccc;
+    font-size: 28px;
+    padding: 30px 0 10px 0;
+    text-align: center;
+    margin: 30px 0 0 0;
+}
+
+.tv_packet_chalenger h4 {
+    color: #ccc;
+    font-size: 22px;
+    padding: 10px 0 30px 0;
+    text-align: center;
+    margin: 0px 0 0 0;
+}
+
+.chanel_tv {
+    width: 120px;
+    height: 120px;
+    border: 4px solid rgb(158, 4, 4);
+    border-radius: 100px;
+    margin: 10px auto;
+}
+
+.chanel_tv_head {
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 48;
+    color: #ccc;
+    text-align: center;
+}
+
+.chanel_tv_foot {
+    color: #ccc;
+    padding: 00px;
+    margin: -20px auto 0 auto;
+    text-align: center;
+}
+
+.calan_list {
+    color: #ccc;
+    text-align: center;
+    display: block;
+    margin: 20px auto 50px auto;
+    border-bottom: 2px dotted;
+    width: 120px;
+}
+
+.chanal_list_ajax_show {
+    width: 1190px;
+    margin: 30px auto;
+}
+
+.tv_packet_name {
+    padding-left: 30px;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+.tv_packet_hate {
+    padding-left: 30px;
+    font-size: 21px;
+    padding-bottom: 10px;
+}
+
+.tv_packet_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chanel_view1 {
+    width: 148px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.chanel_view1 img {
+    width: 148px;
+}
+
+.chanel_view1 p {
+    padding: 10px;
+    text-align: center;
+}

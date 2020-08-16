@@ -17,6 +17,11 @@ class Handler
         $page = new \Modules\Telecom\Controller\Internet;
         $page->internet($url);
     }
+    public function tv($url)
+    {
+        $page = new \Modules\Telecom\Controller\Tv;
+        $page->internet($url);
+    }
     public function InternetITv($url)
     {
         $page = new \Modules\Telecom\Controller\InternetITv;
@@ -45,6 +50,11 @@ class Handler
     public function ajaxShowTP($url)
     {
         $page = new \Modules\Telecom\Modules\Ajax\Internet;
+        $page->index($url);
+    }
+    public function ajaxShowTV($url)
+    {
+        $page = new \Modules\Telecom\Modules\Ajax\Tv;
         $page->index($url);
     }
 }

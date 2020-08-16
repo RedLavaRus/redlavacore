@@ -8,6 +8,7 @@ class Init
 
     public function install()
     {
+        /*
         $dd = new Create();
         $dd -> create("telecom_tarifs")
         ->add("type","VARCHAR","255","not null","тип:Мобильная свзяь, шпд, тв, оборудование")
@@ -26,6 +27,13 @@ class Init
         ->add("namberz","VARCHAR","255","null","Номер заявки ")
         ->add("stat","VARCHAR","255","null","Статус");
         $dd1 ->execute();
+*/
+        $tv_pac = new Create();
+        $tv_pac -> create("telecom_tv")
+        ->add("name_packet","int","1","null","пакет каналов")
+        ->add("name","text","255","null","название канала")
+        ->add("img","text","255","null","адрес изображения");
+        $tv_pac ->execute();
     }
     public function delete()
     {
