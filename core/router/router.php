@@ -64,7 +64,7 @@ class Router
     */
     public static function rout($url)
     {
-        if($url["url"][0] == "instal"){
+        if(isset($url["url"][0]) && $url["url"][0] == "instal"){
             self::instails();
         }
         if(isset($_GET["go"]) && $_GET["go"] == "ajax")  \Core\Ajax\Ajax::show($url);
