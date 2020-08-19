@@ -819,3 +819,11 @@
         font-size: 24px;
     }
 }
+
+.a {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@ $var = \Core\Show\View::$var;
 $arr_m = [];
     foreach($var["menu"]["lvl1"] as $m){
         echo 
-        '<div class="a_element_menu" id="menu1_'.$m["url"].'">'.$m["ru_name"].'</div>';
+        '<div class="a a_element_menu " id="menu1_'.$m["url"].'">'.$m["ru_name"].'</div>';
         $arr_m[] ="menu1_".$m['url'];
     }
 
