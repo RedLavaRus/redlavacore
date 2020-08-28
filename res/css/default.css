@@ -288,3 +288,13 @@ nav {
 .a {
     cursor: pointer;
 }
+
+.user_auth_form_box {
+    width: 300px;
+    margin: 10px auto;
+    background: #e3e3e3;
+}
+
+.user_auth_form_box h1 {
+    font-size: 24px;
+}

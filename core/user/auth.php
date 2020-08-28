@@ -22,6 +22,10 @@ class Auth
             $result->add("res", $res);
         }  
         
+        echo
+        \Core\Values\Val::returnHead("pre").
+        \Core\Values\Val::returnHead(NULL).
+        \Core\Values\Val::returnHead("post");
         $result->view("/core/user/view/login.php");
     }
     public function getAuth($url)
@@ -37,7 +41,13 @@ class Auth
         ->from("user")->limit(1)->execute()->object();
         if(isset($orm->object[0]["id"]) and $orm->object[0]["id"]>= 1){
             $_SESSION["id"] = $orm->object[0]["id"];
+
             $result = new \Core\Show\View;
+
+            echo
+            \Core\Values\Val::returnHead("pre").
+            \Core\Values\Val::returnHead(NULL).
+            \Core\Values\Val::returnHead("post");
             $result->add("res","ecgtiyj");
             $result->view("/core/user/view/loginsys.php");
             die();

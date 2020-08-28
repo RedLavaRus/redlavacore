@@ -29,7 +29,7 @@ class Header
        <a href="/internet/"><div class="l2_item">Интернет</div></a>
        <a href="/mobilnaya-svyaz/"><div class="l2_item">Мобильная связь</div></a>
        <a href="/tv/"><div class="l2_item">Телевидение</div></a>
-       <div class="l2_item_r">Подключение в Краснодаре тел.: <b>+7 (918) 94-32-613</b></div>       
+       <div class="l2_item_r">Подключение в Краснодаре тел.: <b>+7 (960) 49-44-999</b></div>       
        </div> 
     
         ';
